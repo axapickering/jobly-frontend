@@ -1,5 +1,5 @@
 import React from 'react';
-import {addCommasToIntegerPart} from './helpers'
+import { addCommasToIntegerPart } from './helpers';
 /**
  *  Renders one card with info about a job
  *
@@ -11,14 +11,14 @@ function JobCard({ title, companyHandle, salary, equity }) {
 
   if (companyHandle) {
 
-  companyHandle = companyHandle
-    .split("-")
-    .map(name => name.charAt(0).toUpperCase() + name.slice(1))
-    .join("-");
+    companyHandle = companyHandle
+      .split("-")
+      .map(name => name.charAt(0).toUpperCase() + name.slice(1))
+      .join("-");
 
   }
   function addCommasToIntegerPart(integerPart) {
-    let strinInt = String(integerPart)
+    let strinInt = String(integerPart);
     let result = '';
     let length = strinInt.length;
 
@@ -37,10 +37,10 @@ function JobCard({ title, companyHandle, salary, equity }) {
   return (
     <div class="card w-75 mb-3" >
       <div class="card-body">
-        <p><strong>{title}</strong></p>
-          <h5 class="card-title">{companyHandle}</h5>
-          <p class="card-text">Salary:{addCommasToIntegerPart(salary)}</p>
-          <p class="float-right">Equity: {equity}</p>
+        <p><strong>{title}</strong> <br /> {companyHandle}</p>
+        <p class="card-text">
+          Salary:{addCommasToIntegerPart(salary)}  <br /> Equity: {equity}
+        </p>
       </div>
     </div>
   );
