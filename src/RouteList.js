@@ -6,7 +6,7 @@ import CompanyDetail from "./CompanyDetail";
 import JobsPage from "./JobsPage";
 
 /**
- * Registers routes 
+ * Registers routes
  *
  * RouteList -> Routes -> {Route, Route....}
  */
@@ -15,7 +15,7 @@ function RouteList() {
     <Routes>
       <Route element={<HomePage />} path="/" />
       <Route element={<CompaniesPage />} path="/companies" />
-      <Route element={<CompanyDetail />} path="/companies/:name" />
+      <Route element={<CompanyDetail />} path="/companies/:handle" />
       <Route element={<JobsPage />} path="/jobs" />
     </Routes>
   );

@@ -1,11 +1,16 @@
 import React from 'react';
-
+import CompanyCard from './CompanyCard'
 /**
  * Renderes Company Detail page
  */
-function CompaniesList() {
+function CompaniesList({companies}) {
+
   return(
-    <h1>CompaniesList</h1>
+    <div className='CompaniesList flex-column'>
+      {companies.map(company => (
+        <CompanyCard company={company}/>
+      ))}
+    </div>
   )
 }
 
