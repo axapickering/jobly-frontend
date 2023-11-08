@@ -10,17 +10,23 @@ import { Link } from "react-router-dom";
  */
 
 function CompanyCard({ handle, name, description, logoUrl }) {
+
+  const displayImg = logoUrl
+    ? <img className="float-right" src={logoUrl} alt={handle}></img>
+    : "";
+
   return (
-    <div class="card w-75 mb-3" >
-      <div class="card-body">
-        <Link to={`/companies/${handle}`}>
+    <div className="card w-75 mb-3">
+      <div className="card-body">
+      <Link className="text-body text-decoration-none" to={`/companies/${handle}`}>
           <h5 class="card-title">{name}</h5>
           <p class="card-text">{description}</p>
-          <img class="float-right" src={logoUrl} alt={handle}></img>
+          {displayImg}
         </Link>
       </div>
     </div>
   );
+
 }
 
 export default CompanyCard;

@@ -24,14 +24,19 @@ function SearchBar({ handleSubmit }) {
   }
 
   return (
-    <div className="input-group">
+    <div className="input-group m-3">
       <form onSubmit={onSubmit}>
-        <div className="form-outline">
-          <input onChange={handleChange} value={formData} type="search" id="search" className="form-control" />
-          <label className="form-label" htmlFor="search">Search</label>
+        <div className="input-group">
+          <input
+            type="search"
+            onChange={handleChange}
+            value={formData}
+            className="form-control rounded"
+            placeholder="Search"
+            aria-label="Search"
+            aria-describedby="search-addon" />
+          <button type="submit" className="btn btn-primary">search</button>
         </div>
-        <button type="button" className="btn btn-primary">
-        </button>
       </form>
     </div>
   );

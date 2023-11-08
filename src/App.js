@@ -9,12 +9,19 @@ import RouteList from './RouteList';
  */
 function App() {
   return (
-    <div className='App'>
-      <BrowserRouter>
-        <Nav />
+    <BrowserRouter>
+    <Nav />
+    <div className='App container'>
+      <div className='row'>
+        <div className='col-10'>
+
+
         <RouteList />
-      </BrowserRouter>
+
+        </div>
+      </div>
     </div>
+    </BrowserRouter>
   )
 }
 
