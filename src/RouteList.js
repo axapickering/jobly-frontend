@@ -8,7 +8,9 @@ import JobsPage from "./JobsPage";
 /**
  * Registers routes
  *
- * RouteList -> Routes -> {Route, Route....}
+ * App => RouteList -> Routes -> {Route, Route....}
+ *
+ * TODO: company not found error
  */
 function RouteList() {
   return (

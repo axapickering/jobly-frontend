@@ -1,9 +1,13 @@
 import React from 'react';
 import JobCard from './JobCard'
 /**
- * Renderes Company Detail page
+ * Renders list of jobs
+ *
+ * Props: jobs - [job, ...] where job is object containing info about a job
+ *
+ * {CompanyDetails,JobsPage} => JobsList => JobCard
  */
-function JobsList({jobs}) {
+function JobsList({jobs}) { //TODO: flesh out props
 
   return(
     <div className='JobsList flex-column'>

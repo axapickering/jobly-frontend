@@ -1,9 +1,14 @@
 import React from 'react';
 import CompanyCard from './CompanyCard'
 /**
- * Renderes Company Detail page
+ * Renders Company Detail page
+ *
+ * props: companies : [company, ...]
+ *        where company is object containing data about one company
+ *
+ *  CompaniesPage => CompaniesList => CompanyCard
  */
-function CompaniesList({companies}) {
+function CompaniesList({companies}) { // TODO: spread props and add key!!!!!!!!
 
   return(
     <div className='CompaniesList flex-column'>

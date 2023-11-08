@@ -1,6 +1,14 @@
 import React from 'react';
 import { Link } from "react-router-dom";
 
+/**
+ *  Renders a card with info about one company
+ *
+ *  Props: company - object containing all info about one company
+ *
+ *  CompaniesList => CompanyCard
+ */
+
 function CompanyCard({ company }) {
   return (
     <div class="card w-75 mb-3">

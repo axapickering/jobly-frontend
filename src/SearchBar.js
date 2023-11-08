@@ -1,12 +1,19 @@
 import React, { useState } from 'react';
 
-
+/**
+ * Renders a search bar
+ *
+ *  Props: handleSubmit - function from parent that handles submit action
+ *
+ *  State: formData - current user input, used to update search bar value
+ *
+ *  {CompaniesPage, JobsPage} => SearchBar
+ */
 function SearchBar({ handleSubmit }) {
   const [formData, setFormData] = useState('');
 
   function handleChange(evt) {
-    const { name, value } = evt.target;
-    setFormData(fData => (value));
+    setFormData(evt.target.value.trim());
   }
 
   function onSubmit(evt) {

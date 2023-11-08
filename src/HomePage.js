@@ -2,10 +2,16 @@ import React from 'react';
 
 /**
  * Renders Homepage
+ *
+ *  RouteList => HomePage
  */
 function HomePage() {
   return(
-    <h1>homepage</h1>
+    <div>
+      <h1>Jobly</h1>
+      <p>All the jobs in one, convenient place.</p>
+    </div>
+
   )
 }
 
