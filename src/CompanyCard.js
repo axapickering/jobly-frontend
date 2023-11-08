@@ -9,14 +9,14 @@ import { Link } from "react-router-dom";
  *  CompaniesList => CompanyCard
  */
 
-function CompanyCard({ company }) {
+function CompanyCard({ handle, name, description, logoUrl }) {
   return (
-    <div class="card w-75 mb-3">
+    <div class="card w-75 mb-3" >
       <div class="card-body">
-        <Link to={`/companies/${company.handle}`}>
-          <h5 class="card-title">{company.name}</h5>
-          <p class="card-text">{company.description}</p>
-          <img class="float-right" src={company.logoUrl} alt={company.handle}></img>
+        <Link to={`/companies/${handle}`}>
+          <h5 class="card-title">{name}</h5>
+          <p class="card-text">{description}</p>
+          <img class="float-right" src={logoUrl} alt={handle}></img>
         </Link>
       </div>
     </div>

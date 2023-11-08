@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from "react-router-dom";
+import { useParams, Navigate } from "react-router-dom";
 import JoblyApi from './api';
 import JobsList from './JobsList';
+import Loading from './Loading';
 
 /**
  * Renders Company Detail page
@@ -14,20 +15,27 @@ import JobsList from './JobsList';
  *  RouteList => CompanyDetail => JobsList
  */
 function CompanyDetail() {
-  const [company, setCompany] = useState({ company: null, isLoading: true }); // TODO: bool not needed
+  const [company, setCompany] = useState(null);
+  const [error, setError] = useState([]);
+  
   const { handle } = useParams();
 
   useEffect(function getCompany() {
     async function getACompany() {
-      const companyData = await JoblyApi.getCompany(handle); // TODO: try/catch, create error state
-      setCompany({ company: companyData, isLoading: false });
+      try {
+        const companyData = await JoblyApi.getCompany(handle);
+        setCompany({ company: companyData });
+      } catch (err) {
+        setError([err]);
+      }
     }
     getACompany();
   }, [handle]);
 
 
-  // TODO: check for error state
-  if (company.isLoading) return <p>Loading...</p>;
+  if (error.length > 0) return <Navigate to={'/companies'} />;
+
+  if (company === null) return <Loading />;
 
   const { name, description, jobs } = company.company;
 

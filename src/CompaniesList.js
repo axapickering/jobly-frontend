@@ -8,12 +8,18 @@ import CompanyCard from './CompanyCard'
  *
  *  CompaniesPage => CompaniesList => CompanyCard
  */
-function CompaniesList({companies}) { // TODO: spread props and add key!!!!!!!!
+function CompaniesList({companies}) {
 
   return(
     <div className='CompaniesList flex-column'>
       {companies.map(company => (
-        <CompanyCard company={company}/>
+        <CompanyCard
+          key={company.handle}
+          handle={company.handle}
+          name={company.name}
+          description={company.description}
+          logoUrl={company.logoUrl}
+        />
       ))}
     </div>
   )

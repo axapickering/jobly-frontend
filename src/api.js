@@ -39,11 +39,11 @@ class JoblyApi {
       console.error("API Error:", resp.statusText, resp.status);
       const { error } = await resp.json();
 
-      if( Array.isArray(error.message)){
+      if (Array.isArray(error.message)) {
         throw error.message;
       }
-      else{
-        console.log(error.message)
+      else {
+        console.log(error.message);
         throw [error.message];
       }
 
@@ -61,30 +61,20 @@ class JoblyApi {
     return res.company;
   }
 
-   /**Get Companies by title */
-   static async getCompanies(name){
-    let res = name
-    ? await this.request('companies', {nameLike: name})
-    : await this.request('companies')
+  /**Get Companies by title */
+  static async getCompanies(nameLike) {
+    let res = nameLike
+      ? await this.request('companies', { nameLike })
+      : await this.request('companies');
 
     return res.companies;
   }
 
   /**Get all jobs */
-  static async getJobs() {
-    let res = await this.request(`jobs`)
-    return res.jobs;
-  }
-
-  /**Get jobs by company handle */
-  static async getJobsByCompany(handle) {
-    let res = await this.getCompany(handle)
-    return res.jobs;
-  }
-
-  /**Get jobs by title search param */
-  static async getJobsByTitle(title) {
-    let res = await this.request('jobs', {title})
+  static async getJobs(title) {
+    let res = title
+      ? await this.request('jobs', { title })
+      : await this.request(`jobs`);
     return res.jobs;
   }
 

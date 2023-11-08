@@ -7,12 +7,18 @@ import JobCard from './JobCard'
  *
  * {CompanyDetails,JobsPage} => JobsList => JobCard
  */
-function JobsList({jobs}) { //TODO: flesh out props
+function JobsList({jobs}) {
 
   return(
     <div className='JobsList flex-column'>
       {jobs.map(job => (
-        <JobCard job={job}/>
+        <JobCard
+          key={job.id}
+          title={job.title}
+          companyHandle={job.companyHandle}
+          salary={job.salary}
+          equity={job.equity}
+        />
       ))}
     </div>
   )

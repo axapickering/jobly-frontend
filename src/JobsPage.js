@@ -3,6 +3,7 @@ import { useState } from 'react';
 import JoblyApi from "./api";
 import SearchBar from "./SearchBar";
 import JobsList from "./JobsList";
+import Loading from './Loading';
 
 /**
  *  Renders JobsPage
@@ -13,20 +14,19 @@ import JobsList from "./JobsList";
  *  RouteList => JobsPage => {SearchBar/JobsList}
  */
 function JobsPage() {
-    const [jobs,setJobs] = useState({jobs:null,isLoading:true});
+    const [jobs,setJobs] = useState(null);
 
   useEffect(function getJobs() {
       fetchJobs();
   },[]);
 
   async function fetchJobs(title) {
-    const jobs = title
-      ? await JoblyApi.getJobs(title)
-      : await JoblyApi.getJobs();
-    setJobs({jobs,isLoading:false});
+    const jobs = await JoblyApi.getJobs(title)
+
+    setJobs({jobs});
   }
 
-  if (jobs.isLoading) return <p>Loading... </p>;
+  if (jobs === null) return <Loading />;
 
   return(
     <div>

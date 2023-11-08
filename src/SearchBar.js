@@ -13,13 +13,13 @@ function SearchBar({ handleSubmit }) {
   const [formData, setFormData] = useState('');
 
   function handleChange(evt) {
-    setFormData(evt.target.value.trim());
+    setFormData(evt.target.value);
   }
 
   function onSubmit(evt) {
     evt.preventDefault();
     console.log("IN SUBMIT")
-    handleSubmit(formData);
+    handleSubmit(formData.trim());
     setFormData(fdata => (''));
   }
 

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import JoblyApi from './api';
 import CompaniesList from './CompaniesList';
 import SearchBar from './SearchBar';
+import Loading from './Loading';
 
 /**
  * Renders Companies page
@@ -11,21 +12,19 @@ import SearchBar from './SearchBar';
  *  RouteList => CompaniesPage => {SearchBar,CompaniesList}
  */
 function CompaniesPage() {
-  const [companies, setCompanies] = useState({companies:null, isLoading:true}); // TODO: don't need boolean here
+  const [companies, setCompanies] = useState(null);
 
   useEffect(function fetchAllCompanies() {
     getCompanies();
-  },[]);
+  }, []);
 
   async function getCompanies(name) {
-    let response = name // TODO: no ternary needed
-      ? await JoblyApi.getCompanies(name)
-      : await JoblyApi.getCompanies();
+    let response = await JoblyApi.getCompanies(name);
 
     setCompanies({ companies: response, isLoading: false });
   }
 
-  if (companies.isLoading) return <p>Loading....</p>; // TODO: make component for loading
+  if (companies === null) return <Loading />; 
 
   return (
     <div className='CompaniesPage'>
