@@ -3,7 +3,7 @@ import React from "react";
 import './App.css';
 import Nav from './Nav';
 import RouteList from './RouteList';
-//TODO:Fix docstring for what is rendering what
+
 /**Renders App
  * App -> {Nav, RouteList}
  */
