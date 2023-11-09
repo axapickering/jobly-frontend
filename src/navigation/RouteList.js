@@ -1,10 +1,10 @@
 import React from "react";
 import { Route, Routes, Navigate } from 'react-router-dom';
-import HomePage from "./HomePage";
-import CompaniesPage from "./CompaniesPage";
-import CompanyDetail from "./CompanyDetail";
-import JobsPage from "./JobsPage";
-import NotFound from "./NotFound"
+import HomePage from "../HomePage";
+import CompaniesPage from "../companies/CompaniesPage";
+import CompanyDetail from "../companies/CompanyDetail";
+import JobsPage from "../jobs/JobsPage";
+import NotFound from "../NotFound"
 
 /**
  * Registers routes

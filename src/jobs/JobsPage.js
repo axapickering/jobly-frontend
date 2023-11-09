@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react';
 import { useState } from 'react';
-import JoblyApi from "./api";
-import SearchBar from "./SearchBar";
+import JoblyApi from "../api";
+import SearchBar from "../SearchBar";
 import JobsList from "./JobsList";
-import Loading from './Loading';
+import Loading from '../Loading';
 
 /**
  *  Renders JobsPage
