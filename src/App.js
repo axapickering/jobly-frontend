@@ -5,15 +5,9 @@ import Nav from './navigation/Nav';
 import RouteList from './navigation/RouteList';
 import userContext from './context/userContext';
 import JoblyApi from './api';
-import { jwtDecode } from "jwt-decode";
+import { jwtDecode } from 'jwt-decode';
 
-
-/**Renders Jobly,
- *
- * State:
- * - user: stores the current users username
- * - token: stores the token returned from the API
- *
+/**Renders App
  * App -> {Nav, RouteList}
  */
 function App() {
@@ -24,9 +18,9 @@ function App() {
   useEffect(function () {
     async function fetchUserInfo() {
       if (token !== null) {
-        // let user = await JoblyApi.getUserInfo(token);
         const userInfo = jwtDecode(token);
-        setUser(userInfo);
+        let user = await JoblyApi.getUserInfo(userInfo.username);
+        setUser(user);
 
       } else {
 
@@ -39,19 +33,18 @@ function App() {
   }, [token]);
 
 
-  /**Takes user inputted data calls api to register user, returns token on success */
   async function signup(formData) {
-    console.log("IN SIGNUP", formData)
     let res = await JoblyApi.signup(formData);
 
     if (res.error) {
       <Navigate to='/signup' error={res.error} />;
     }
 
+    JoblyApi.token = res.token;
     setToken(res.token);
   }
 
-  /**Takes user inputted data calls api to login the user, returns token on success */
+
   async function login(formData) {
     let res = await JoblyApi.login(formData);
 
@@ -59,14 +52,15 @@ function App() {
       <Navigate to='/login' error={res.error} />;
     }
 
+    JoblyApi.token = res.token;
     setToken(res.token);
-
   }
 
-  /**Logs user out */
+
   function logout() {
     setToken(null);
   }
+
 
   return (
     <userContext.Provider value={user}>

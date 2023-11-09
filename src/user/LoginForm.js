@@ -3,7 +3,14 @@ import { BrowserRouter, Navigate, useNavigate } from 'react-router-dom';
 import { useState } from "react";
 
 /**
- * 
+ *  Renders a login form that allows a user to log in
+ *
+ *  Props: login - a function from App that allows user to log in
+ *
+ *  State: formData - an object containing all form fields
+ *         {username, password}
+ *
+ *  RouteList => LoginForm
  */
 function LoginForm({ login }) {
   const navigate = useNavigate();

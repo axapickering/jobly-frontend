@@ -35,10 +35,10 @@ function JobCard({ title, companyHandle, salary, equity }) {
   }
 
   return (
-    <div class="card w-75 mb-3" >
-      <div class="card-body">
+    <div className="card w-75 mb-3" >
+      <div className="card-body">
         <p><strong>{title}</strong> <br /> {companyHandle}</p>
-        <p class="card-text">
+        <p className="card-text">
           Salary:{addCommasToIntegerPart(salary)}  <br /> Equity: {equity}
         </p>
       </div>

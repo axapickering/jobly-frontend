@@ -26,8 +26,8 @@ function CompanyCard({ handle, name, description, logoUrl }) {
     <div className="card mb-3">
       <div className="card-body">
         <Link className="text-body text-decoration-none" to={`/companies/${handle}`}>
-          <h6 class="card-title">{name}{displayImg}</h6>
-          <p class="card-text"><small>{description}</small></p>
+          <h6 className="card-title">{name}{displayImg}</h6>
+          <p className="card-text"><small>{description}</small></p>
         </Link>
       </div>
     </div>

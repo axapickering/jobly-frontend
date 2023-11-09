@@ -2,19 +2,27 @@ import userContext from "../context/userContext";
 import { BrowserRouter, Navigate, useNavigate } from 'react-router-dom';
 import React, { useState } from "react";
 
-const initialState = {
-  username: "",
-  password: "",
-  firstName: "",
-  lastName:"",
-  email:""
-}
-
+/**
+ *  Renders a signup form that allows a user to log in
+ *
+ *  Props: signup - a function from App that allows user to signup
+ *
+ *  State: formData - an object containing all form fields
+ *         {username, password, firstName, lastName, email}
+ *
+ *  RouteList => SignupForm
+ */
 function SignupForm({ signup }) {
+
+  const initialState = {
+    username: "",
+    password: "",
+    firstName: "",
+    lastName:"",
+    email:""
+  }
+
   const navigate = useNavigate();
-
-  const formStyle = { width: '200px' };
-
   const [formData, setFormData] = useState(initialState);
 
   function handleChange(evt) {
@@ -26,11 +34,11 @@ function SignupForm({ signup }) {
     evt.preventDefault();
     signup(formData);
     setFormData(initialState);
-    navigate("/")
+    setTimeout(() => { navigate("/"); }, 200);
   }
 
   return (
-        <div style={formStyle}>
+        <div style={{width : '200px'}}>
           <form onSubmit={handleSignup}>
 
             <div className="form-group">
