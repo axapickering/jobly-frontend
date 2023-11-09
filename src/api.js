@@ -18,12 +18,20 @@ class JoblyApi {
   //   "FtrMwBQwe6Ue-glIFgz_Nf8XxRT2YecFCiSpYL0fCXc";
 
 
-  static async register(username,password,email,firstName,lastName) {
+  static async register({username, password, email, firstName, lastName}) {
+    let res = await JoblyApi.request('/auth/register', arguments[0], "POST");
 
+    return res;
   }
 
-  static async login(username,password) {
+  static async login({username, password}) {
+    let res = await JoblyApi.request('/token', arguments[0], "POST")
 
+    return res;
+  }
+
+  static async updateUser({username, firstName, lastName, email}) {
+    
   }
 
   static async request(endpoint, data = {}, method = "GET", token) {
