@@ -17,23 +17,6 @@ class JoblyApi {
   //   "SI6InRlc3R1c2VyIiwiaXNBZG1pbiI6ZmFsc2UsImlhdCI6MTU5ODE1OTI1OX0." +
   //   "FtrMwBQwe6Ue-glIFgz_Nf8XxRT2YecFCiSpYL0fCXc";
 
-
-  static async register({username, password, email, firstName, lastName}) {
-    let res = await JoblyApi.request('/auth/register', arguments[0], "POST");
-
-    return res;
-  }
-
-  static async login({username, password}) {
-    let res = await JoblyApi.request('/token', arguments[0], "POST")
-
-    return res;
-  }
-
-  static async updateUser({username, firstName, lastName, email}) {
-    
-  }
-
   static async request(endpoint, data = {}, method = "GET", token) {
     const url = new URL(`${BASE_URL}/${endpoint}`);
     const headers = {
@@ -94,6 +77,29 @@ class JoblyApi {
       ? await this.request('jobs', { title })
       : await this.request(`jobs`);
     return res.jobs;
+  }
+
+  // User API routes
+
+  static async register({username, password, email, firstName, lastName}) {
+    let res = await JoblyApi.request('/auth/register', arguments[0], "POST");
+
+    return res;
+  }
+
+  static async login({username, password}) {
+    let res = await JoblyApi.request('/token', arguments[0], "POST")
+
+    return res;
+  }
+
+  static async getUserInfo({username, token}) {
+    let res = await JoblyApi.request(`/users/${username}`, "POST", token=token);
+    return res.user;
+  }
+
+  static async updateUser({username, firstName, lastName, email}) {
+
   }
 
 }

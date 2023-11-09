@@ -8,7 +8,7 @@ import userContext from "../context/userContext";
  * App -> Nav -> {Link,...}
  */
 function Nav({ logout }) {
-  const { username } = useContext(userContext);
+  const username = useContext(userContext)?.username;
   return (
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
       <div class="container-fluid">
@@ -38,7 +38,7 @@ function Nav({ logout }) {
                   <Link class="nav-link" aria-current="page" to={`/login`}>Login</Link>
                 </li>
                 <li class="nav-item nav-link">
-                  <Link class="nav-link" aria-current="page" to={`/signup`}>SignUp</Link>
+                  <Link class="nav-link" aria-current="page" to={`/signup`}>Sign Up</Link>
                 </li>
               </ul>
               )}
