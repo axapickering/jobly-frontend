@@ -81,23 +81,29 @@ class JoblyApi {
 
   // User API routes
 
-  static async register({username, password, email, firstName, lastName}) {
-    let res = await JoblyApi.request('/auth/register', arguments[0], "POST");
+  /**Takes user data from signup form calls api to register the user, returns
+   * response
+   */
+  static async signup(userData) {
+    let res = await this.request('auth/register', userData, "POST");
 
     return res;
   }
 
-  static async login({username, password}) {
-    let res = await JoblyApi.request('/token', arguments[0], "POST")
+  /**Takes username and password from login form and signs in the user via APi call */
+  static async login(userData) {
+    let res = await this.request('auth/token', userData, "POST")
 
     return res;
   }
 
+  /**Takes username and calls API to get the rest of the user data */
   static async getUserInfo({username, token}) {
-    let res = await JoblyApi.request(`/users/${username}`, "POST", token=token);
+    let res = await this.request(`users/${username}`, "POST", token=token);
     return res.user;
   }
 
+  //TODO:Finish update function
   static async updateUser({username, firstName, lastName, email}) {
 
   }
