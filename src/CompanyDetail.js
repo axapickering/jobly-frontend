@@ -17,7 +17,7 @@ import Loading from './Loading';
 function CompanyDetail() {
   const [company, setCompany] = useState(null);
   const [error, setError] = useState([]);
-  
+
   const { handle } = useParams();
 
   useEffect(function getCompany() {
@@ -33,7 +33,17 @@ function CompanyDetail() {
   }, [handle]);
 
 
-  if (error.length > 0) return <Navigate to={'/companies'} />;
+  if (error.length > 0){
+    return(
+      <div>
+        <ul>
+          {error.map(err => (
+            <h1 className='text-white'>{err}</h1>
+          ))}
+        </ul>
+      </div>
+    )
+  }
 
   if (company === null) return <Loading />;
 

@@ -20,7 +20,7 @@ function SearchBar({ handleSubmit }) {
     evt.preventDefault();
     console.log("IN SUBMIT")
     handleSubmit(formData.trim());
-    setFormData(fdata => (''));
+    setFormData('');
   }
 
   return (

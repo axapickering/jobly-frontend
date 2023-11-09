@@ -23,15 +23,19 @@ function JobsPage() {
   async function fetchJobs(title) {
     const jobs = await JoblyApi.getJobs(title)
 
-    setJobs({jobs});
+    setJobs(jobs);
   }
 
   if (jobs === null) return <Loading />;
 
+  const noJobHtml = <div><h2 className='text-white'>No jobs found!</h2></div>
+
   return(
     <div>
       <SearchBar handleSubmit={fetchJobs} />
-      <JobsList jobs={jobs.jobs}/>
+      {jobs.length === 0
+      ? noJobHtml
+      :<JobsList jobs={jobs}/>}
     </div>
   )
 }

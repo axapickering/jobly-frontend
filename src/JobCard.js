@@ -1,5 +1,5 @@
 import React from 'react';
-import { addCommasToIntegerPart } from './helpers';
+
 /**
  *  Renders one card with info about a job
  *

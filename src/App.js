@@ -14,10 +14,7 @@ function App() {
     <div className='App container'>
       <div className='row'>
         <div className='col-11'>
-
-
         <RouteList />
-
         </div>
       </div>
     </div>

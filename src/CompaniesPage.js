@@ -21,15 +21,19 @@ function CompaniesPage() {
   async function getCompanies(name) {
     let response = await JoblyApi.getCompanies(name);
 
-    setCompanies({ companies: response, isLoading: false });
+    setCompanies(response);
   }
 
-  if (companies === null) return <Loading />; 
+  if (companies === null) return <Loading />;
+
+  const noCompanyHtml = <div><h2 className='text-white'>No companies found!</h2></div>
 
   return (
     <div className='CompaniesPage'>
       <SearchBar handleSubmit={getCompanies} />
-      <CompaniesList companies={companies.companies} />
+      {companies.length === 0
+      ?noCompanyHtml
+      :<CompaniesList companies={companies} />}
     </div>
   );
 }
