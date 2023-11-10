@@ -48,7 +48,6 @@ function App() {
     setToken(res.token);
   }
 
-  //TODO:DISCSTRINGS
   async function login(formData) {
     let res = await JoblyApi.login(formData);
     setToken(res.token);
@@ -57,6 +56,7 @@ function App() {
   async function update(formData) {
     let res = await JoblyApi.update(formData);
     setUser(res);
+    return res;
   }
 
 

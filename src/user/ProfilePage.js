@@ -22,8 +22,8 @@ function ProfilePage({ handleSubmit }) {
         evt.preventDefault();
 
         try {
-            await handleSubmit(formData);
-            setFormData(userInfo);
+            let newInfo = await handleSubmit(formData);
+            setFormData(newInfo);
             setAlerts({msgs:["Updated successfully"],color:"success"})
         } catch(err) {
             setAlerts({msgs:[err],color:"danger"});
