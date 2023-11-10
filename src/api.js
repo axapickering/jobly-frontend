@@ -89,7 +89,7 @@ class JoblyApi {
 
   /**Takes username and password from login form and signs in the user via APi call */
   static async login(userData) {
-    let res = await this.request('auth/token', userData, "POST")
+    let res = await this.request('auth/token', userData, "POST");
     return res;
   }
 
@@ -99,9 +99,14 @@ class JoblyApi {
     return res.user;
   }
 
-  //TODO:Finish update function
-  static async updateUser({username, firstName, lastName, email}) {
+  /** Takes in userdata and calls API to update user's data with new values*/
+  static async update({ username, firstName, lastName, email }) {
+    let res = await this.request(`users/${username}`,
+      { firstName, lastName, email },
+      "PATCH");
 
+    // let { username, firstName, lastName, email } = res.user;
+    return res.user;
   }
 
 }

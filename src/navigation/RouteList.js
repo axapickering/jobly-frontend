@@ -15,7 +15,7 @@ import userContext from "../context/userContext";
  * App => RouteList -> Routes -> {Route, Route....}
  *
  */
-function RouteList({signup, login}) {
+function RouteList({signup, login, update}) {
   const username = useContext(userContext)?.username;
 
   const routesLoggedIn =
@@ -24,7 +24,7 @@ function RouteList({signup, login}) {
         <Route element={<CompaniesPage />} path="/companies" />
         <Route element={<CompanyDetail />} path="/companies/:handle" />
         <Route element={<JobsPage />} path="/jobs" />
-        <Route element={<ProfilePage />} path="/profile" />
+        <Route element={<ProfilePage handleSubmit={update}/>} path="/profile" />
       </>
     )
 

@@ -54,6 +54,11 @@ function App() {
     setToken(res.token);
   }
 
+  async function update(formData) {
+    let res = await JoblyApi.update(formData);
+    setUser(res);
+  }
+
 
   function logout() {
     setToken(null);
@@ -68,7 +73,7 @@ function App() {
         <div className='App container'>
           <div className='row'>
             <div className='col-11'>
-              <RouteList signup={signup} login={login} isLoading={isLoading} />
+              <RouteList signup={signup} login={login} update={update} isLoading={isLoading} />
             </div>
           </div>
         </div>
