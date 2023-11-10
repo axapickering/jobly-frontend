@@ -20,6 +20,7 @@ function JobsPage() {
       fetchJobs();
   },[]);
 
+  /**Fetch all Jobs from API and set the result as state */
   async function fetchJobs(title) {
     const jobs = await JoblyApi.getJobs(title)
 

@@ -1,4 +1,11 @@
 body {
-  background-image: url("../public/images/triangles.png");
+  background-image: url("../public/images/pencilcrop.jpg");
   background-attachment: fixed;
+  background-size: cover;
+  height: auto;
+}
+
+.btn-primary, .btn-primary:hover, .card {
+  background-color: #ccbcac;
+  color: black;
 }

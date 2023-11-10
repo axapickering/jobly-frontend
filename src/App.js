@@ -16,9 +16,7 @@ function App() {
   const [token, setToken] = useState(localStorage.getItem("token"));
   const [isLoading, setIsloading] = useState(true)
 
-  async function checkLocalStorage() {
 
-  }
   useEffect(function () {
     async function fetchUserInfo() {
       if (token) {
@@ -42,24 +40,29 @@ function App() {
 
   }, [token]);
 
-
+  /**Function to be called in signup form to call API and register user */
   async function signup(formData) {
     let res = await JoblyApi.signup(formData);
     setToken(res.token);
   }
 
+  /**Function to be called in login form to call API and login the user*/
   async function login(formData) {
     let res = await JoblyApi.login(formData);
     setToken(res.token);
   }
 
+  /**Function to be called in edit profile form to call API and change user's data
+   * returns an object containing old user data and updated data
+   */
   async function update(formData) {
-    let res = await JoblyApi.update(formData);
-    setUser(res);
-    return res;
+    let oldData = user
+    let newData = await JoblyApi.update(formData);
+    setUser(newData);
+    return {newData, oldData};
   }
 
-
+  /**Function to logout a user, resets user state to null */
   function logout() {
     setToken(null);
   }
@@ -72,7 +75,7 @@ function App() {
         <Nav logout={logout} />
         <div className='App container'>
           <div className='row'>
-            <div className='col-11'>
+            <div className='col-9 mx-auto'>
               <RouteList signup={signup} login={login} update={update} isLoading={isLoading} />
             </div>
           </div>

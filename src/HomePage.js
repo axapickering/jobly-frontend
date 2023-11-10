@@ -28,7 +28,7 @@ function HomePage() {
 
   return (
     <div className='HomePage-container '>
-      <h1>Jobly</h1>
+      <h1 className='shadow-sm'>Jobly</h1>
       <p>All the jobs in one, convenient place.</p>
       {toDisplay}
     </div>

@@ -10,6 +10,7 @@ import userContext from "../context/userContext";
 function Nav({ logout }) {
   const username = useContext(userContext)?.username;
 
+  /**Returns JSX for nav bar links if a user is logged in */
   function navUserLoggedIn() {
     return (
       <ul className="navbar-nav me-auto mb-2 mb-lg-0 ">
@@ -29,6 +30,7 @@ function Nav({ logout }) {
     );
   }
 
+  /**Returns JSX for nav bar links if a user is not logged in */
   function navUserLoggedOut() {
     return (
       <ul className="navbar-nav me-auto mb-2 mb-lg-0 ">
@@ -43,7 +45,7 @@ function Nav({ logout }) {
   }
 
   return (
-    <nav className="navbar navbar-expand-lg bg-body-tertiary">
+    <nav className="navbar navbar-expand-lg " style={{backgroundColor: "#ccbcac"}}>
       <div className="container-fluid">
         <Link className="navbar-brand" to={`/`}>Jobly</Link>
         <div id="navbarSupportedContent">

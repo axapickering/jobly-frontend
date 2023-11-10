@@ -44,7 +44,7 @@ function SignupForm({ signup }) {
   }
 
   return (
-    <div style={{ width: '400px' }}>
+    <div className="mx-auto mt-3" style={{ width: '400px' }}>
       <form onSubmit={handleSignup}>
 
         <div className="form-group">

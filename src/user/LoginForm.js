@@ -37,7 +37,7 @@ function LoginForm({ login }) {
   }
 
   return (
-    <div style={{ width: '400px' }}>
+    <div className="mx-auto mt-3" style={{ width: '400px' }}>
       <form onSubmit={handleLogin}>
 
         <div className="form-group">
