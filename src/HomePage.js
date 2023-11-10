@@ -10,13 +10,12 @@ import { Link } from 'react-router-dom';
  */
 function HomePage() {
 
-  const username = useContext(userContext)?.username;
+  const firstName = useContext(userContext)?.firstName;
 
-  const toDisplay = username
-    ? <p> Welcome back, {username}</p>
+  const toDisplay = firstName
+    ? <p> Welcome back, {firstName}</p>
     : (
       <>
-
         <Link to={'/login'}>
           <button className="btn btn-primary">Login</button>
         </Link>
@@ -24,7 +23,6 @@ function HomePage() {
         <Link to={'/signup'}>
           <button className="btn btn-primary mt-2">Signup</button>
         </Link>
-
       </>
     );
 

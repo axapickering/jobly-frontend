@@ -37,7 +37,6 @@ function SignupForm({ signup }) {
     try {
       await signup(formData);
       setFormData(initialState);
-      setErrors(null)
       navigate("/");
     } catch (err) {
       setErrors(err);
@@ -106,7 +105,7 @@ function SignupForm({ signup }) {
         <button type="submit" className="btn btn-primary mt-3">Submit</button>
 
       </form>
-      {errors && (<Alert alerts={errors} isSuccess={false}/>)}
+      {errors && (<Alert alerts={errors} color={"danger"}/>)}
     </div>
 
   );

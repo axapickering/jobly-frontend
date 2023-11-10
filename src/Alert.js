@@ -1,11 +1,12 @@
 import React from 'react';
-
-function Alert({alerts, isSuccess}) {
-  let alertColor = isSuccess ? "alert alert-success mt-3" : "alert alert-danger mt-3"
-
+/**
+ * Alert renders text to show user errors or success upon form submission
+ * {LoginForm, SignupForm, ProfilePage} -> Alert
+ */
+function Alert({alerts, color}) {
   return (
-    <div className={alertColor} role="alert">
-        {alerts.map(alert => <p>{alert}</p>)}
+    <div className={`alert alert-${color} mt-3`} role="alert">
+        {alerts.map(alert => <p key={alert}>{alert}</p>)}
     </div>
   )
 }

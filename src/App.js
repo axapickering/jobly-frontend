@@ -6,30 +6,36 @@ import RouteList from './navigation/RouteList';
 import userContext from './context/userContext';
 import JoblyApi from './api';
 import { jwtDecode } from 'jwt-decode';
+import Loading from './Loading';
 
 /**Renders App
  * App -> {Nav, RouteList}
  */
 function App() {
   const [user, setUser] = useState(null);
-  const [token, setToken] = useState(null);
+  const [token, setToken] = useState(localStorage.getItem("token"));
+  const [isLoading, setIsloading] = useState(true)
 
+  async function checkLocalStorage() {
 
+  }
   useEffect(function () {
     async function fetchUserInfo() {
       if (token) {
+        localStorage.setItem("token", token)
         JoblyApi.token = token;
         const userInfo = jwtDecode(token);
         try {
-          let user = await JoblyApi.getUserInfo(userInfo.username); // try/catch
+          let user = await JoblyApi.getUserInfo(userInfo.username);
           setUser(user);
         } catch (err) {
           console.error(err);
         }
       } else {
-
+        localStorage.clear();
         setUser(null);
       }
+      setIsloading(false);
     }
 
     fetchUserInfo();
@@ -39,22 +45,12 @@ function App() {
 
   async function signup(formData) {
     let res = await JoblyApi.signup(formData);
-
-    if (res.error) {
-      console.log("IN APP ERROR", res.error)
-      throw new Error(res.error);
-    }
     setToken(res.token);
   }
 
-
+  //TODO:DISCSTRINGS
   async function login(formData) {
     let res = await JoblyApi.login(formData);
-
-    if (res.error) {
-      throw new Error(res.error);
-    }
-
     setToken(res.token);
   }
 
@@ -63,6 +59,7 @@ function App() {
     setToken(null);
   }
 
+  if (isLoading) return <Loading />
 
   return (
     <userContext.Provider value={user}>
@@ -71,7 +68,7 @@ function App() {
         <div className='App container'>
           <div className='row'>
             <div className='col-11'>
-              <RouteList signup={signup} login={login} />
+              <RouteList signup={signup} login={login} isLoading={isLoading} />
             </div>
           </div>
         </div>

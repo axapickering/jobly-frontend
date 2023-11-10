@@ -30,7 +30,6 @@ function LoginForm({ login }) {
     try {
       await login(formData);
       setFormData({ username: "", password: "" });
-      setErrors(null);
       navigate("/");
     } catch (err) {
       setErrors(err);
@@ -65,7 +64,7 @@ function LoginForm({ login }) {
 
       </form>
 
-      {errors && (<Alert alerts={errors} isSuccess={false}/>)}
+      {errors && (<Alert alerts={errors} color={"danger"}/>)}
     </div>
 
   );
