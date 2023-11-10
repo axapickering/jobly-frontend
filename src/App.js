@@ -19,9 +19,9 @@ function App() {
     async function fetchUserInfo() {
       if (token !== null) {
         const userInfo = jwtDecode(token);
-        let user = await JoblyApi.getUserInfo(userInfo.username);
+        let user = await JoblyApi.getUserInfo(userInfo.username); // try/catch
         setUser(user);
-
+        // TODO: set token here in joblyAPI
       } else {
 
         setUser(null);

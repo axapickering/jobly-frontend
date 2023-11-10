@@ -24,11 +24,12 @@ function LoginForm({ login }) {
     setFormData(oldData => ({ ...oldData, [name]: value }));
   }
 
+  // TODO: async
   function handleLogin(evt) {
     evt.preventDefault();
     login(formData);
     setFormData({ username: "", password: "" });
-    setTimeout(() => { navigate("/"); }, 200);
+    setTimeout(() => { navigate("/"); }, 240);
 
   }
 
