@@ -17,11 +17,15 @@ function App() {
 
   useEffect(function () {
     async function fetchUserInfo() {
-      if (token !== null) {
+      if (token) {
+        JoblyApi.token = token;
         const userInfo = jwtDecode(token);
-        let user = await JoblyApi.getUserInfo(userInfo.username); // try/catch
-        setUser(user);
-        // TODO: set token here in joblyAPI
+        try {
+          let user = await JoblyApi.getUserInfo(userInfo.username); // try/catch
+          setUser(user);
+        } catch (err) {
+          console.error(err);
+        }
       } else {
 
         setUser(null);
@@ -37,10 +41,9 @@ function App() {
     let res = await JoblyApi.signup(formData);
 
     if (res.error) {
-      <Navigate to='/signup' error={res.error} />;
+      console.log("IN APP ERROR", res.error)
+      throw new Error(res.error);
     }
-
-    JoblyApi.token = res.token;
     setToken(res.token);
   }
 
@@ -49,10 +52,9 @@ function App() {
     let res = await JoblyApi.login(formData);
 
     if (res.error) {
-      <Navigate to='/login' error={res.error} />;
+      throw new Error(res.error);
     }
 
-    JoblyApi.token = res.token;
     setToken(res.token);
   }
 

@@ -1,6 +1,7 @@
 import userContext from "../context/userContext";
 import { BrowserRouter, Navigate, useNavigate } from 'react-router-dom';
 import { useState } from "react";
+import Alert from "../Alert";
 
 /**
  *  Renders a login form that allows a user to log in
@@ -15,26 +16,29 @@ import { useState } from "react";
 function LoginForm({ login }) {
   const navigate = useNavigate();
 
-  const formStyle = { width: '200px' };
-
   const [formData, setFormData] = useState({ username: "", password: "" });
+  const [errors, setErrors] = useState(null);
 
   function handleChange(evt) {
     const { name, value } = evt.target;
     setFormData(oldData => ({ ...oldData, [name]: value }));
   }
 
-  // TODO: async
-  function handleLogin(evt) {
-    evt.preventDefault();
-    login(formData);
-    setFormData({ username: "", password: "" });
-    setTimeout(() => { navigate("/"); }, 240);
 
+  async function handleLogin(evt) {
+    evt.preventDefault();
+    try {
+      await login(formData);
+      setFormData({ username: "", password: "" });
+      setErrors(null);
+      navigate("/");
+    } catch (err) {
+      setErrors(err);
+    }
   }
 
   return (
-    <div style={formStyle}>
+    <div style={{ width: '400px' }}>
       <form onSubmit={handleLogin}>
 
         <div className="form-group">
@@ -57,10 +61,11 @@ function LoginForm({ login }) {
             required
           />
         </div>
-
         <button type="submit" className="btn btn-primary mt-3">Submit</button>
 
       </form>
+
+      {errors && (<Alert alerts={errors} isSuccess={false}/>)}
     </div>
 
   );
