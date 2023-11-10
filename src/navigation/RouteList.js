@@ -4,7 +4,6 @@ import HomePage from "../HomePage";
 import CompaniesPage from "../companies/CompaniesPage";
 import CompanyDetail from "../companies/CompanyDetail";
 import JobsPage from "../jobs/JobsPage";
-import NotFound from "../NotFound"
 import LoginForm from "../user/LoginForm"
 import ProfilePage from "../user/ProfilePage"
 import SignupForm from "../user/SignupForm"
@@ -29,7 +28,6 @@ function RouteList({signup, login}) {
       </>
     )
 
-
   const routesLoggedOut =
    (
       <>
@@ -37,7 +35,6 @@ function RouteList({signup, login}) {
         <Route element={<LoginForm login={login}/>} path="/login" />
       </>
     )
-
 
   return (
     <Routes>
