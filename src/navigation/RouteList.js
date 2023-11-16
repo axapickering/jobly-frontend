@@ -24,7 +24,7 @@ function RouteList({signup, login, update}) {
         <Route element={<CompaniesPage />} path="/companies" />
         <Route element={<CompanyDetail />} path="/companies/:handle" />
         <Route element={<JobsPage />} path="/jobs" />
-        <Route element={<ProfilePage handleSubmit={update}/>} path="/profile" />
+        <Route element={<ProfilePage edit={update}/>} path="/profile" />
       </>
     )
 

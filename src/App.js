@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import './App.css';
 import Nav from './navigation/Nav';
 import RouteList from './navigation/RouteList';
-import userContext from './context/userContext';
+import userContext from '../userContext';
 import JoblyApi from './api';
 import { jwtDecode } from 'jwt-decode';
 import Loading from './Loading';
